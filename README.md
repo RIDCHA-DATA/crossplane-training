@@ -1,5 +1,4 @@
 # crossplane-training
-Hands on labs to get started with crossplane to orchestrate GCP resources
 
 
 ## Requiremnts
