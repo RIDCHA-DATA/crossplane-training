@@ -1,0 +1,42 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: CompositeResourceDefinition
+metadata:
+  name: rtestpods.ahmed.mellina.tn
+spec:
+  defaultCompositionRef:
+    name: test-pod
+  group: ahmed.mellina.tn
+  names:
+    kind: rTestPod
+    plural: rtestpods
+  claimNames:
+    kind: TestPod
+    plural: testpods
+  versions:
+  - name: v1alpha1
+    served: true
+    referenceable: true
+    schema:
+      openAPIV3Schema:
+        type: object
+        properties:
+          spec:
+            type: object
+            properties:
+              containers:
+                type:  array
+                description: "defines the value of the containers"
+                items:
+                  type: object
+                  properties:
+                    podName:
+                      type: string
+                      description: defines name of the container
+                    podImage:
+                      type: string
+                      description: defines name of image to be used
+                  required:
+                    - podName
+                    - podImage
+            required:
+              - containers
